@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function() {
 
   const keys = document.querySelectorAll("span") //selects all keys within container
   const display = document.querySelector("#screen") //selects caluclator screen to display
@@ -11,20 +11,20 @@ document.addEventListener("DOMContentLoaded", function(){
     if (y === 0) {
       return "Error"
     } else {
-      return x/y
+      return x / y
     }
   }
 
   let multiply = function(x, y) {
-    return x*y
+    return x * y
   }
 
   let add = function(x, y) {
-    return x+y
+    return x + y
   }
 
   let subract = function(x, y) {
-    return x-y
+    return x - y
   }
 
   //click function for each button event - clear, equals, mathematical operators, cannot compute
@@ -32,15 +32,15 @@ document.addEventListener("DOMContentLoaded", function(){
   keys.forEach(function(button) {
     button.addEventListener("click", function() {
 
-      if (button.id !== "clear" || button.id !== "equals") {
+      if (display.textContent === "Error") {
+        display.textContent = "";
+      }
+
+      if (button.id !== "clear" && button.id !== "equals") {
         display.textContent += button.textContent
-      }
-
-      if (button.id === "clear") {
+      } else if (button.id === "clear") {
         display.textContent = ""
-      }
-
-      if (button.id === "equals") {
+      } else if (button.id === "equals") {
         operators.forEach(function(calc) {
 
           if ((display.textContent).includes(calc)) {
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function(){
             }
 
             if (display.textContent === "NaN") {
-              display.textContent = "Cannot compute"
+              display.textContent = "Error"
             }
           }
         })
