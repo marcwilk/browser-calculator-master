@@ -1,4 +1,4 @@
-const { expect } = chai
+const { expect, should, assert } = chai
 
 describe("Tests are working", () => {
   it("it's on", () => {
@@ -6,70 +6,35 @@ describe("Tests are working", () => {
   })
 })
 
+describe("Operators", () => {
+  it("Can perform multiplication", () => {
+    expect(multiply(5,10)).to.equal(50)
+  })
+
+  it("Can perform division", () => {
+    expect(divide(10,5)).to.equal(2)
+  })
+
+  it("Can perform addition", () => {
+    expect(add(10,5)).to.equal(15)
+  })
+
+  it("Can perform subtraction", () => {
+    expect(subtract(10,5)).to.equal(5)
+  })
+})
 
 describe("Screen Tests", () => {
-  it("sets the screen to 1", () => {
-    clearScreen()
-    updateScreen('1')
-    expect(getScreen()).to.equal('1')
+  it("Can get/set the screen", () => {
+    setScreen('test')
+    expect(getScreen()).to.equal('test');
   })
-
-  it("appends when setting the screen to 11", () => {
-    clearScreen()
-    updateScreen('1')
-    updateScreen('1')
-
-    expect(getScreen()).to.equal('11')
+  it("Can clear the screen", () => {
+  setScreen('test')
+  clearScreen()
+  expect(getScreen()).to.equal('');
   })
-
-  it("sets clears the screen", () => {
-    updateScreen('1')
-    clearScreen()
-    expect(getScreen()).to.equal('')
+  it("Clears the screen", () => {
+  expect(getScreen()).to.equal('');
   })
 })
-
-describe("1+1 is 2", () => {
-  it("sets the screen to 1 + 1", () => {
-    clearScreen()
-    updateScreen('1')
-    updateScreen('+')
-    updateScreen('1')
-    expect(getScreen()).to.equal('1+1')
-  })
-})
-
-
-describe("DOM tests", () => {
-  it("clears the screen", () => {
-    clearScreen()
-    updateScreen('1')
-    // click clear button
-    let clearButton = document.getElementById('clear')
-    clearButton.click()
-
-    expect(getScreen()).to.equal('')
-  })
-
-  it("clicking 1 + 1 sets screen to '1+1'", () => {
-    clearScreen()
-    // click clear button
-    let oneButton = findButton('1')
-    let plusButton = findButton('+')
-    oneButton.click()
-    plusButton.click()
-    oneButton.click()
-
-    expect(getScreen()).to.equal('1+1')
-  })
-})
-
-function findButton(char) {
-  let buttons = document.querySelectorAll('.buttons span')
-
-   for (let button of buttons) {
-     if (char === button.innerText) {
-       return button
-     }
-   }
-}

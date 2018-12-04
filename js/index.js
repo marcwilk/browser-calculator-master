@@ -1,3 +1,35 @@
+let multiply = function(x, y) {
+  return x * y
+}
+
+let divide = function(x, y) {
+  if (y === 0) {
+    return "Error"
+  } else {
+    return x / y
+  }
+}
+
+let add = function(x, y) {
+  return x + y
+}
+
+let subtract = function(x, y) {
+  return x - y
+}
+
+let screen = document.getElementById('screen')
+
+let setScreen = (value) => {
+  screen.innerText = value
+}
+
+let getScreen = () => screen.innerText
+
+let clearScreen = () => {
+  setScreen('')
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 
   const keys = document.querySelectorAll("span") //selects all keys within container
@@ -6,26 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
   let operators = ["÷", "x", "-", "+"]
 
   //testing different types of mathematical operators
-
-  let divide = function(x, y) {
-    if (y === 0) {
-      return "Error"
-    } else {
-      return x / y
-    }
-  }
-
-  let multiply = function(x, y) {
-    return x * y
-  }
-
-  let add = function(x, y) {
-    return x + y
-  }
-
-  let subract = function(x, y) {
-    return x - y
-  }
 
   //click function for each button event - clear, equals, mathematical operators, cannot compute
 
@@ -62,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             if (calc === "-") {
-              display.textContent = subract(x, y)
+              display.textContent = subtract(x, y)
             }
 
             if (display.textContent === "NaN") {
